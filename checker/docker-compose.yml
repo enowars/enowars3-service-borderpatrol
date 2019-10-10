@@ -1,0 +1,22 @@
+version: '3.6'
+services:
+  borderpatrol-frontend:
+    build: .
+    image: dockerreg.enowars.com:5000/borderpatrol-backend
+    networks:
+     - bridge
+     - enoverlay
+    deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.backend=borderpatrol-checker"
+        - "traefik.docker.network=enoverlay"
+        - "traefik.frontend.rule=Host:borderpatrol.checker.enowars.com,service2.checker.enowars.com"
+        - "traefik.port=80"
+      replicas: 2
+
+networks:
+  bridge:
+    external: true
+  enoverlay:
+    external: true

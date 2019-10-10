@@ -1,0 +1,6 @@
+git+https://github.com/domenukk/enochecker.git@benni
+asyncio
+pycryptodome
+numpy
+hypercorn
+construct

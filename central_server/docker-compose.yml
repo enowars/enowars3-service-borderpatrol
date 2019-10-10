@@ -1,0 +1,20 @@
+version: '3'
+services:
+  borderpatrol-checker:
+    build: .
+    image: 10.13.37.7:5000/borderpatrol-server
+    ports:
+      - 0.0.0.0:8888:8888
+    environment:
+      OMP_NUM_THREADS: 1
+      NUMEXPR_NUM_THREADS: 1 
+      MKL_NUM_THREADS: 1
+    networks:
+      - bridge
+      - enoverlay
+
+networks:
+  bridge:
+    external: true
+  enoverlay:
+    external: true
